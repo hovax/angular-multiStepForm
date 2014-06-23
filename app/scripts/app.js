@@ -8,12 +8,12 @@
  *
  * Main module of the application.
  */
-angular
-  .module('angularMsfApp', [
+var app = angular.module('angularMsfApp', [
     'ngAnimate',
     'ui.router'
-])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  ]);
+
+app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
       // basic form (/form)
@@ -38,12 +38,39 @@ angular
       });
 
     $urlRouterProvider.otherwise('/form/profile');
-})
+  });
 
-  .controller('formCtrl', function($scope){
+app.run(['$rootScope', '$location', function($rootScope, $location){
+    $rootScope.$on('$stateChangeStart', function() {
+      console.log('stateChangeStart');
+    });
+    $rootScope.$on('$stateChangeSuccess', function() {
+      console.log('stateChangeSuccess');
+    });
+  }]);
+
+app.controller('formCtrl', function($scope){
     $scope.formData = {};
 
     $scope.processForm=function() {
       alert('awesome!');
     };
   });
+
+app.directive('loadbar',['$rootScope', function($rootScope) {
+  return {
+    link: function(scope, element) {
+      element.addClass('hide');
+
+      $rootScope.$on('$stateChangeStart', function() {
+        element.removeClass('hide');
+        console.log('show the load bar');
+      });
+
+      $rootScope.$on('$stateChangeSuccess', function() {
+        element.addClass('hide');
+        console.log('remove the load bar');
+      });
+    }
+  };
+}]);
