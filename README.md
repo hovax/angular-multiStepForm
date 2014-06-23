@@ -11,6 +11,10 @@ Have the same/advanced function as the questionaire smaple in angular-test app
 * with specific option, goto different subquestions
 * repeat the process, until specific option leads to the answer
 
+## ToDo
+* Display only 3 steps in nav bar (beforeStep, currentStep, more...)
+* PartialViews
+
 ## Diff with angular-test app
 #### the nav bar (not determined, how to deal with)
 1. display all steps
