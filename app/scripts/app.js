@@ -24,20 +24,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       })
 
       // nested states
-      .state('form.prev', {
-        url: '/prev',
-        templateUrl: 'views/form-prev.html'
+      .state('form.viewA', {
+        url: '/viewA',
+        templateUrl: 'views/form-viewA.html'
       })
-      .state('form.current', {
-        url: '/current',
-        templateUrl: 'views/form-current.html'
+      .state('form.viewB', {
+        url: '/viewB',
+        templateUrl: 'views/form-viewB.html'
       })
-      .state('form.next', {
-        url: '/next',
-        templateUrl: 'views/form-next.html'
+      .state('form.viewC', {
+        url: '/viewC',
+        templateUrl: 'views/form-viewC.html'
       });
 
-    $urlRouterProvider.otherwise('/form/current');
+    $urlRouterProvider.otherwise('/form/viewC');
   });
 
 app.run(['$rootScope', '$location', function($rootScope, $location){
