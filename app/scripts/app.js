@@ -24,20 +24,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       })
 
       // nested states
-      .state('form.profile', {
-        url: '/profile',
-        templateUrl: 'views/form-profile.html'
+      .state('form.prev', {
+        url: '/prev',
+        templateUrl: 'views/form-prev.html'
       })
-      .state('form.interests', {
-        url: '/interests',
-        templateUrl: 'views/form-interests.html'
+      .state('form.current', {
+        url: '/current',
+        templateUrl: 'views/form-current.html'
       })
-      .state('form.payment', {
-        url: '/payment',
-        templateUrl: 'views/form-payment.html'
+      .state('form.next', {
+        url: '/next',
+        templateUrl: 'views/form-next.html'
       });
 
-    $urlRouterProvider.otherwise('/form/profile');
+    $urlRouterProvider.otherwise('/form/current');
   });
 
 app.run(['$rootScope', '$location', function($rootScope, $location){
@@ -55,6 +55,8 @@ app.controller('formCtrl', function($scope){
     $scope.processForm=function() {
       alert('awesome!');
     };
+
+    $scope.steps = ['prev', 'current', 'next'];
   });
 
 app.directive('loadbar',['$rootScope', function($rootScope) {
