@@ -11,9 +11,12 @@ Have the same/advanced function as the questionaire smaple in angular-test app
 * with specific option, goto different subquestions
 * repeat the process, until specific option leads to the answer
 
+## Current Features
+* use two view to achieve the animation
+* defered update the questionaire databse
+* prev and next function to come back and through
+
 ## ToDo
-* Display only 3 steps in nav bar (beforeStep, currentStep, more...)
-* PartialViews
 
 ## Diff with angular-test app
 #### the nav bar (not determined, how to deal with)
@@ -22,3 +25,4 @@ Have the same/advanced function as the questionaire smaple in angular-test app
 
 #### the container
 1. not partials, only rewrite
+

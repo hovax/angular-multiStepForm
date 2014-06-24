@@ -24,52 +24,57 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       })
 
       // nested states
-      .state('form.viewA', {
+      .state('form.A', {
         url: '/viewA',
         templateUrl: 'views/form-viewA.html'
       })
-      .state('form.viewB', {
+      .state('form.B', {
         url: '/viewB',
         templateUrl: 'views/form-viewB.html'
       })
-      .state('form.viewC', {
+      .state('form.C', {
         url: '/viewC',
         templateUrl: 'views/form-viewC.html'
       });
 
-    $urlRouterProvider.otherwise('/form/viewC');
+    $urlRouterProvider.otherwise('/form/viewA');
   });
 
-app.run(['$rootScope', '$location', function($rootScope, $location){
+app.run(['$rootScope', function($rootScope){
     $rootScope.$on('$stateChangeStart', function() {
       console.log('stateChangeStart');
+      $rootScope.db = $rootScope.updatedb;
+      console.log('db update');
+      // $roorScope.answer = $rootScope.updateanswer;
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       console.log('stateChangeSuccess');
     });
   }]);
 
-app.controller('formCtrl', function($scope, $http){
+app.controller('formCtrl', function($scope, $http, $state, $rootScope){
   // save the choice data
-    $scope.formData = {};
+    $rootScope.formData = {};
 
-    $scope.processForm=function() {
-      alert('Awesome! You have finished the questionaire!');
-    };
+    $scope.$state = $state;
 
   // read data from json
-    $scope.NOW = {};
     $http.get('data.json').success(function(data) {
-      $scope.db = data;
+      $rootScope.db = data;
     })
 
     $scope.next = function (data) {
-      $scope.db = eval("(" + data + ")").next;
-      $scope.NOW.currentContent = eval("(" + data + ")").content;
-      $scope.answer = eval("(" + data + ")").answer;
-      console.log("next function runs");
-    };
+        $rootScope.olddb = $rootScope.db;
+        // $rootScope.answer = $rootScope.answer;
+        $rootScope.updatedb = eval("(" + data + ")").next;
+        $rootScope.answer = eval("(" + data + ")").answer;
+        console.log("next function runs");
+      };
 
+    $scope.prev = function () {
+        $rootScope.updatedb = $rootScope.olddb;
+        console.log("prev function runs");
+    };
   });
 
 app.directive('loadbar',['$rootScope', function($rootScope) {

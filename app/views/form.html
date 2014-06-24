@@ -6,13 +6,18 @@
 
         <div class="page-header text-center">
             <h2>Question-Option-Answer</h2>
-
             <div id="status-buttons" class="text-center">
-                <a ui-sref-active="active"><span class="glyphicon glyphicon-chevron-left"></span>Prev</a>
-                <a ui-sref-active="active" ui-sref=""><span class="glyphicon glyphicon-pencil"></span>Current</a>
-                <a ui-sref-active="active"><span class="glyphicon glyphicon-chevron-right"></span>Next</a>
+                <div ng-if="$state.current.name == 'form.A'">
+                    <a ui-sref="form.B" ng-click="prev()"><span class="glyphicon glyphicon-chevron-left"></span>Prev</a>
+                    <a class="active"><span class="glyphicon glyphicon-pencil"></span>Current</a>
+                    <a ui-sref="form.B" ng-click="next(formData.type)"><span class="glyphicon glyphicon-chevron-right"></span>Next</a>
+                </div>
+                <div ng-if="$state.current.name == 'form.B'">
+                    <a ui-sref="form.A" ng-click="prev()"><span class="glyphicon glyphicon-chevron-left"></span>Prev</a>
+                    <a class="active"><span class="glyphicon glyphicon-pencil"></span>Current</a>
+                    <a ui-sref="form.A" ng-click="next(formData.type)"><span class="glyphicon glyphicon-chevron-right"></span>Next</a>
+                </div>
             </div>
-
         </div>
 
         <div loadbar class="text-center">
