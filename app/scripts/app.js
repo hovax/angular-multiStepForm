@@ -49,14 +49,27 @@ app.run(['$rootScope', '$location', function($rootScope, $location){
     });
   }]);
 
-app.controller('formCtrl', function($scope){
+app.controller('formCtrl', function($scope, $http){
+  // save the choice data
     $scope.formData = {};
 
     $scope.processForm=function() {
-      alert('awesome!');
+      alert('Awesome! You have finished the questionaire!');
     };
 
-    $scope.steps = ['prev', 'current', 'next'];
+  // read data from json
+    $scope.NOW = {};
+    $http.get('data.json').success(function(data) {
+      $scope.db = data;
+    })
+
+    $scope.next = function (data) {
+      $scope.db = eval("(" + data + ")").next;
+      $scope.NOW.currentContent = eval("(" + data + ")").content;
+      $scope.answer = eval("(" + data + ")").answer;
+      console.log("next function runs");
+    };
+
   });
 
 app.directive('loadbar',['$rootScope', function($rootScope) {
