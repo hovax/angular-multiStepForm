@@ -17,6 +17,7 @@ Have the same/advanced function as the questionaire smaple in angular-test app
 * prev and next function to come back and through
 
 ## ToDo
+* in order to use prev to goto prev x step, need change in data structure(like double linked list)
 
 ## Diff with angular-test app
 #### the nav bar (not determined, how to deal with)
