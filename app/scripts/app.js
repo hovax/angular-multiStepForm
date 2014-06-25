@@ -58,10 +58,15 @@ app.controller('formCtrl', function($scope, $http, $state, $rootScope){
 
     $scope.$state = $state;
 
+    // $rootScope.db = db;
   // read data from json
     $http.get('data.json').success(function(data) {
       $rootScope.db = data;
-    })
+    });
+
+    // $.getJSON('data.json',function(data) {
+    //   $rootScope.db=data;
+    // });
 
     $scope.next = function (data) {
         $rootScope.olddb = $rootScope.db;

@@ -1,4 +1,4 @@
- {
+var db = {
     "question": "Q1",
     "tip": "Tip: Choose whatever you want",
     "options": [
