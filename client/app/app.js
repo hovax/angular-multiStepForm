@@ -5,11 +5,12 @@ angular.module('angularMultiStepFormApp', [
   'ngResource',
   'ngSanitize',
   'ui.bootstrap',
-  'ui.router'
+  'ui.router',
+  'ngAnimate'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/main/viewA');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
