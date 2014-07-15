@@ -20,7 +20,7 @@ pre                             { margin-bottom:20px; }
 
 /* form styling */
 #form-container                { background:#2f2f2f; margin-bottom:20px;
-    border-radius:5px; }
+    border-radius:5px; color: #ffffff }
 #form-container .page-header   { background:#151515; margin:0; padding:30px;
     border-top-left-radius:5px; border-top-right-radius:5px; }
 #form-container .page-bottom   {background:#151515; margin:0; padding:30px;
