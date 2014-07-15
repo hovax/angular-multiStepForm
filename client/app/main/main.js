@@ -16,11 +16,11 @@ app.config(function ($stateProvider) {
       // nested states
       .state('main.A', {
         url: '/viewA',
-        templateUrl: 'views/form-viewA.html'
+        templateUrl: 'app/main/viewA.html'
       })
       .state('main.B', {
         url: '/viewB',
-        templateUrl: 'views/form-viewB.html'
+        templateUrl: 'app/main/viewB.html'
       });
 
   });
@@ -47,7 +47,6 @@ app.controller('mainCtrl', function($scope, $http, $state, $rootScope){
   // read data from json
     $http.get('data.json').success(function(data) {
       $rootScope.db = data;
-      console.log(data);
     });
 
     // $.getJSON('data.json',function(data) {
