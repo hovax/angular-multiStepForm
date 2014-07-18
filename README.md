@@ -14,6 +14,8 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
     * with specific option, goto different subquestions
     * repeat the process, until specific option leads to the answer
 * back-end
+    * a dynamic nested view for the database management section
+    * check angular-test repo
 
 ## Current Features
 * use two view to achieve the animation
@@ -22,7 +24,6 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
 
 ## ToDo
 * in order to use prev to goto prev x step, need change in data structure(like double linked list)
-* need a dynamic nested view for the database management section
 * dynamic data binding(auto add new entries(unpredicted length))
 
 ## Requirements
