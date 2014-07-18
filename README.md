@@ -25,6 +25,8 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
 ## ToDo
 * in order to use prev to goto prev x step, need change in data structure(like double linked list)
 * dynamic data binding(auto add new entries(unpredicted length))
+* display the value you are typing, as recursively using the ng-include, using the same temp value(auto data-binding of ng)
+* add choices of next\answer(two different partial view)
 
 ## Requirements
 * Yeoman
