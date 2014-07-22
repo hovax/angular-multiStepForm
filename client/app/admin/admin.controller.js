@@ -7,7 +7,7 @@ angular.module('angularMultiStepFormApp')
       $scope.users = users;
     });
 
-    $scope.delete = function(user) {
+    $scope.deleteUser = function(user) {
       User.remove({ id: user._id });
       angular.forEach($scope.users, function(u, i) {
         if (u === user) {
@@ -16,15 +16,27 @@ angular.module('angularMultiStepFormApp')
       });
     };
 
-    $scope.deleteNode = function(data) {
-        data.nodes = [];
-      };
-    $scope.addNode = function(data) {
-        var post = data.nodes.length + 1;
-        var newName = data.name + '-' + post;
-        data.nodes.push({name: newName,nodes: []});
-      };
+    $scope.delete = function(data) {
+        data.options = [];
+    };
 
-    $scope.tree = [{name: 'Node', nodes: []},{name: 'Node2', nodes: []}];
+    $scope.save = function(data) {
+        data.content = this.content;
+        data.question = this.question;
+        data.tip = this.tip;
+    };
+    $scope.add = function(data) {
+
+        data.options.push({content:'',question:'', tip:'', options: []});
+    };
+
+    $scope.refresh = function(data) {
+        console.log(data);
+        this.content="";
+        this.question="";
+        this.tip="";
+    };
+
+    $scope.tree = [{question: '', tip: '', options: []}];
 
   });

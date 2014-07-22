@@ -6,17 +6,50 @@
     <li class="list-group-item" ng-repeat="user in users">
         <strong>{{user.name}}</strong><br>
         <span class="text-muted">{{user.email}}</span>
-        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+        <a ng-click="deleteUser(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
     </li>
   </ul>
 
 <hr>
 
-  <h2><span class="glyphicon glyphicon-th-list"></span> Database Management</h2>
+<h2><span class="glyphicon glyphicon-th-list"></span> Database Management</h2>
     <div class="well">
-      TBD
+                <ul>
+                    <li ng-repeat="data in tree" ng-include="'tree_item_renderer.html'"></li>
+                </ul>
     </div>
+    {{tree}}
 <hr>
 </div>
 
+<script type="text/ng-template"  id="tree_item_renderer.html">
 
+    <div class="well" ng-init="refresh(data)">
+
+    <div>
+        <div class="input-group">
+            <span class="input-group-addon">Content</span>
+            <input type="text" class="form-control" ng-model="content" placeholder="Add your content here">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Question</span>
+            <input type="text" class="form-control" ng-model="question" placeholder="Add your question here">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Tip</span>
+            <input type="text" class="form-control" ng-model="tip" placeholder="Add your tip here">
+        </div>
+        <br>
+    </div>
+
+    <button ng-click="save(data)">Save</button>
+    <button ng-click="add(data)">Add Option</button>
+    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
+
+    <ul>
+        <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+</div>
+</script>
