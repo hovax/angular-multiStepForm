@@ -13,14 +13,38 @@
 <hr>
 
 <h2><span class="glyphicon glyphicon-th-list"></span> Database Management</h2>
-    <div class="well">
-                <ul>
-                    <li ng-repeat="data in tree" ng-include="'tree_item_renderer.html'"></li>
-                </ul>
-    </div>
+    <div ng-repeat="data in tree" ng-include="'tree_item_renderer_top.html'"></div>
     {{tree}}
 <hr>
 </div>
+
+<script type="text/ng-template"  id="tree_item_renderer_top.html">
+
+    <div class="well" ng-init="refresh(data)">
+
+    <div>
+        <div class="input-group">
+            <span class="input-group-addon">Question</span>
+            <input type="text" class="form-control" ng-model="question" placeholder="Add your question here">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon">Tip</span>
+            <input type="text" class="form-control" ng-model="tip" placeholder="Add your tip here">
+        </div>
+        <br>
+    </div>
+
+    <button ng-click="saveTop(data)">Save</button>
+    <button ng-click="add(data)">Add Option</button>
+    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
+    <br>
+    <br>
+    <ul>
+        <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+</div>
+</script>
 
 <script type="text/ng-template"  id="tree_item_renderer.html">
 
@@ -45,9 +69,10 @@
     </div>
 
     <button ng-click="save(data)">Save</button>
+    <button ng-click="answer(data)">Answer</button>
     <button ng-click="add(data)">Add Option</button>
     <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
-
+    <br>
     <ul>
         <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
     </ul>

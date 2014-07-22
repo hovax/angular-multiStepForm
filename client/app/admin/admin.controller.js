@@ -18,24 +18,26 @@ angular.module('angularMultiStepFormApp')
 
     $scope.delete = function(data) {
         data.options = [];
-    };
+      };
 
     $scope.save = function(data) {
         data.content = this.content;
         data.question = this.question;
         data.tip = this.tip;
-    };
+      };
+    $scope.saveTop = function(data) {
+        data.question = this.question;
+        data.tip = this.tip;
+      };
     $scope.add = function(data) {
-
         data.options.push({content:'',question:'', tip:'', options: []});
-    };
-
+      };
     $scope.refresh = function(data) {
         console.log(data);
-        this.content="";
-        this.question="";
-        this.tip="";
-    };
+        this.content='';
+        this.question='';
+        this.tip='';
+      };
 
     $scope.tree = [{question: '', tip: '', options: []}];
 
