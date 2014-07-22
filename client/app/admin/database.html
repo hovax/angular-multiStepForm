@@ -1,0 +1,8 @@
+    <div>
+    {{data.name}}
+    <button ng-click="addNode(data)">Add node</button>
+    <button ng-click="deleteNode(data)" ng-show="data.nodes.length > 0">Delete nodes</button>
+    <ul>
+        <li ng-repeat="data in data.nodes" ng-include="'admin/database.html'"></li>
+    </ul>
+</div>

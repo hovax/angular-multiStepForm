@@ -15,4 +15,16 @@ angular.module('angularMultiStepFormApp')
         }
       });
     };
+
+    $scope.deleteNode = function(data) {
+        data.nodes = [];
+      };
+    $scope.addNode = function(data) {
+        var post = data.nodes.length + 1;
+        var newName = data.name + '-' + post;
+        data.nodes.push({name: newName,nodes: []});
+      };
+
+    $scope.tree = [{name: 'Node', nodes: []},{name: 'Node2', nodes: []}];
+
   });
