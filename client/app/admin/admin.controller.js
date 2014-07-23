@@ -16,12 +16,26 @@ angular.module('angularMultiStepFormApp')
       });
     };
 
-    $scope.questionValue = function(data) {
+    $scope.questionValueTop = function(data) {
       data.question=this.question;
     };
 
-    $scope.tipValue = function(data) {
+    $scope.tipValueTop = function(data) {
       data.tip=this.tip;
+    };
+
+    $scope.addTop = function(data) {
+        data.options.push({content:''});
+      };
+
+    $scope.questionValue = function(data) {
+      data.next.question=this.question;
+      console.log(this.question);
+      console.log(data.next.question);
+    };
+
+    $scope.tipValue = function(data) {
+      data.next.tip=this.tip;
     };
 
     $scope.contentValue = function(data) {
@@ -32,8 +46,18 @@ angular.module('angularMultiStepFormApp')
       data.answer=this.answer;
     };
 
-    $scope.answer = function() {
+    $scope.addAnswer = function(data) {
       this.showAnswer=true;
+      this.showNext=false;
+      delete data.next;
+    };
+
+    $scope.addNext = function(data) {
+      this.showNext=true;
+      this.showAnswer=false;
+      data.next = {};
+      data.next.options = [];
+      delete data.answer;
     };
 
     $scope.delete = function(data) {
@@ -49,15 +73,17 @@ angular.module('angularMultiStepFormApp')
         data.question = this.question;
         data.tip = this.tip;
       };
+
     $scope.add = function(data) {
-        data.options.push({content:''});
+        data.next.options.push({content:''});
       };
-    $scope.refresh = function(data) {
-        console.log(data);
+
+    $scope.refresh = function() {
         this.content='';
         this.question='';
         this.tip='';
         this.showAnswer=false;
+        this.showNext=false;
       };
 
     $scope.tree = [{question: '', tip: '', options: []}];

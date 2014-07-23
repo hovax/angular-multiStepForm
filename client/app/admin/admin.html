@@ -25,18 +25,18 @@
     <div>
         <div class="input-group">
             <span class="input-group-addon">Question</span>
-            <input type="text" class="form-control" ng-model="question" ng-change="questionValue(data)" placeholder="Add your question here">
+            <input type="text" class="form-control" ng-model="question" ng-change="questionValueTop(data)" placeholder="Add your question here">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">Tip</span>
-            <input type="text" class="form-control" ng-model="tip" ng-change="tipValue(data)" placeholder="Add your tip here">
+            <input type="text" class="form-control" ng-model="tip" ng-change="tipValueTop(data)" placeholder="Add your tip here">
         </div>
         <br>
     </div>
 
-    <button ng-click="add(data)">Add Option</button>
-    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
+    <button ng-click="addTop(data)">Add Option</button>
+    <button ng-click="deleteTop(data)" ng-show="data.options.length > 0">Delete Options</button>
     <br>
     <br>
     <ul>
@@ -47,7 +47,7 @@
 
 <script type="text/ng-template"  id="tree_item_renderer.html">
 
-    <div class="well" ng-init="refresh(data)">
+    <div class="well" ng-init="refresh()">
 
     <div>
         <div class="input-group">
@@ -58,15 +58,17 @@
 
         <div ng-show="showAnswer" ng-include="'tree_item_answer.html'"></div>
 
+        <div ng-show="showNext" ng-include="'tree_item_next.html'"></div>
+
     </div>
 
-    <button ng-click="answer()" ng-show="!showAnswer">Answer</button>
-    <button ng-click="next()" ng-show="showAnswer">Next</button>
-    <button ng-click="add(data)" ng-show="!showAnswer">Add Option</button>
+    <button ng-click="addAnswer(data)" ng-show="!showAnswer">Answer</button>
+    <button ng-click="addNext(data)" ng-show="!showNext">Next</button>
+    <button ng-click="add(data)" ng-show="showNext">Add Option</button>
     <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
     <br>
     <ul>
-        <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
+        <li ng-repeat="data in data.next.options" ng-include="'tree_item_renderer.html'"></li>
     </ul>
 </div>
 </script>
@@ -74,12 +76,12 @@
 <script type="text/ng-template" id="tree_item_next.html">
     <div class="input-group">
             <span class="input-group-addon">Question</span>
-            <input type="text" class="form-control" ng-model="question" placeholder="Add your question here">
+            <input type="text" class="form-control" ng-model="question" ng-change="questionValue(data)" placeholder="Add your question here">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">Tip</span>
-            <input type="text" class="form-control" ng-model="tip" placeholder="Add your tip here">
+            <input type="text" class="form-control" ng-model="tip" ng-change="tipValue(data)" placeholder="Add your tip here">
         </div>
         <br>
 
