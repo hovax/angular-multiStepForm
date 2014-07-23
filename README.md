@@ -19,7 +19,7 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
         * database management
 * back-end
     * a dynamic nested view for the database management section
-    * check angular-test repo
+    * database in the form of expected json
 
 ## Current Features
 * use two view to achieve the animation
@@ -29,7 +29,7 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
 
 ## ToDo
 * in order to use prev to goto prev x step, need change in data structure(like double linked list)
-* add choices of next\answer(two different partial view)
+* api interface(Mongo) to connect backend and frontend
 
 ## Requirements
 * Yeoman
