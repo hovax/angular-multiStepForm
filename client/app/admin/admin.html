@@ -25,17 +25,16 @@
     <div>
         <div class="input-group">
             <span class="input-group-addon">Question</span>
-            <input type="text" class="form-control" ng-model="question" placeholder="Add your question here">
+            <input type="text" class="form-control" ng-model="question" ng-change="questionValue(data)" placeholder="Add your question here">
         </div>
         <br>
         <div class="input-group">
             <span class="input-group-addon">Tip</span>
-            <input type="text" class="form-control" ng-model="tip" placeholder="Add your tip here">
+            <input type="text" class="form-control" ng-model="tip" ng-change="tipValue(data)" placeholder="Add your tip here">
         </div>
         <br>
     </div>
 
-    <button ng-click="saveTop(data)">Save</button>
     <button ng-click="add(data)">Add Option</button>
     <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
     <br>
@@ -53,10 +52,27 @@
     <div>
         <div class="input-group">
             <span class="input-group-addon">Content</span>
-            <input type="text" class="form-control" ng-model="content" placeholder="Add your content here">
+            <input type="text" class="form-control" ng-model="content" ng-change="contentValue(data)" placeholder="Add your content here">
         </div>
         <br>
-        <div class="input-group">
+
+        <div ng-show="showAnswer" ng-include="'tree_item_answer.html'"></div>
+
+    </div>
+
+    <button ng-click="answer()" ng-show="!showAnswer">Answer</button>
+    <button ng-click="next()" ng-show="showAnswer">Next</button>
+    <button ng-click="add(data)" ng-show="!showAnswer">Add Option</button>
+    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
+    <br>
+    <ul>
+        <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
+    </ul>
+</div>
+</script>
+
+<script type="text/ng-template" id="tree_item_next.html">
+    <div class="input-group">
             <span class="input-group-addon">Question</span>
             <input type="text" class="form-control" ng-model="question" placeholder="Add your question here">
         </div>
@@ -66,15 +82,14 @@
             <input type="text" class="form-control" ng-model="tip" placeholder="Add your tip here">
         </div>
         <br>
-    </div>
 
-    <button ng-click="save(data)">Save</button>
-    <button ng-click="answer(data)">Answer</button>
-    <button ng-click="add(data)">Add Option</button>
-    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
-    <br>
-    <ul>
-        <li ng-repeat="data in data.options" ng-include="'tree_item_renderer.html'"></li>
-    </ul>
-</div>
+</script>
+
+
+<script type="text/ng-template" id="tree_item_answer.html">
+        <div class="input-group">
+            <span class="input-group-addon">Answer</span>
+            <input type="text" class="form-control" ng-model="answer" ng-change="answerValue(data)" placeholder="Add your answer here">
+        </div>
+        <br>
 </script>
