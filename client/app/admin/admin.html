@@ -14,7 +14,7 @@
 
 <h2><span class="glyphicon glyphicon-th-list"></span> Database Management</h2>
     <div ng-repeat="data in tree" ng-include="'tree_item_renderer_top.html'"></div>
-    {{tree}}
+    <button ng-click="saveServer()"><span class="glyphicon glyphicon-hdd"> Save to Server</span></button>
 <hr>
 </div>
 
@@ -65,7 +65,7 @@
     <button ng-click="addAnswer(data)" ng-show="!showAnswer">Answer</button>
     <button ng-click="addNext(data)" ng-show="!showNext">Next</button>
     <button ng-click="add(data)" ng-show="showNext">Add Option</button>
-    <button ng-click="delete(data)" ng-show="data.options.length > 0">Delete Options</button>
+    <button ng-click="delete(data)" ng-show="data.next.options.length > 0">Delete Options</button>
     <br>
     <ul>
         <li ng-repeat="data in data.next.options" ng-include="'tree_item_renderer.html'"></li>
@@ -95,3 +95,7 @@
         </div>
         <br>
 </script>
+
+            <input type="text" class="form-control" ng-model="string.text">
+
+

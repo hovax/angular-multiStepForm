@@ -16,6 +16,16 @@ angular.module('angularMultiStepFormApp')
       });
     };
 
+      $scope.string = {};
+
+
+    $scope.saveServer = function() {
+      console.log($scope.string);
+      $http.post('/api/questionTrees',$scope.string).success(function(data) {
+        $scope.tree = {};
+      });
+    };
+
     $scope.questionValueTop = function(data) {
       data.question=this.question;
     };
@@ -26,6 +36,10 @@ angular.module('angularMultiStepFormApp')
 
     $scope.addTop = function(data) {
         data.options.push({content:''});
+      };
+
+    $scope.deleteTop = function(data) {
+        data.options = [];
       };
 
     $scope.questionValue = function(data) {
@@ -61,7 +75,7 @@ angular.module('angularMultiStepFormApp')
     };
 
     $scope.delete = function(data) {
-        data.options = [];
+        data.next.options = [];
       };
 
     $scope.save = function(data) {
