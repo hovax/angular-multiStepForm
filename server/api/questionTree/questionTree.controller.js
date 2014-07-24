@@ -22,7 +22,8 @@ exports.index = function(req, res) {
 // Creates a new questionTree in the DB.
 exports.create = function(req, res) {
   QuestionTree.create({
-    text: req.body,
+    text: req.body.tree,
+    name: req.body.name
     }, function(err, questionTree) {
         if (err)
           res.send(err);
