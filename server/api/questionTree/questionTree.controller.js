@@ -9,11 +9,11 @@
 
 'use strict';
 
-var questionTree = require('./questionTree.model');
+var QuestionTree = require('./questionTree.model');
 
 // Get list of questionTrees
 exports.index = function(req, res) {
-  questionTree.find(function(err, questionTrees) {
+  QuestionTree.find(function(err, questionTrees) {
     if (err) res.send(err);
     res.json(questionTrees);
   });
@@ -21,12 +21,12 @@ exports.index = function(req, res) {
 
 // Creates a new questionTree in the DB.
 exports.create = function(req, res) {
-  questionTree.create({
-    text: req.body.text,
+  QuestionTree.create({
+    text: req.body,
     }, function(err, questionTree) {
         if (err)
           res.send(err);
-        questionTree.find(function(err, questionTrees) {
+        QuestionTree.find(function(err, questionTrees) {
           if (err) res.send(err);
             res.json(questionTrees);
             });
@@ -35,13 +35,13 @@ exports.create = function(req, res) {
 
 // Deletes a questionTree from the DB.
 exports.destroy = function(req, res) {
-  questionTree.remove({
+  QuestionTree.remove({
                 _id : req.params.questionTree_id
             }, function(err, questionTree) {
                 if (err)
                     res.send(err);
 
-                questionTree.find(function(err, questionTrees) {
+                QuestionTree.find(function(err, questionTrees) {
                     if (err) res.send(err);
                     res.json(questionTrees);
                 });

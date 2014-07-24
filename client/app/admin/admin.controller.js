@@ -16,12 +16,10 @@ angular.module('angularMultiStepFormApp')
       });
     };
 
-      $scope.string = {};
 
 
     $scope.saveServer = function() {
-      console.log($scope.string);
-      $http.post('/api/questionTrees',$scope.string).success(function(data) {
+      $http.post('/api/questionTrees',$scope.tree).success(function(data) {
         $scope.tree = {};
       });
     };

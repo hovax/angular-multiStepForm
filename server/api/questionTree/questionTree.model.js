@@ -3,8 +3,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var questionTreeSchema = new Schema({
+var QuestionTreeSchema = new Schema({
   text: String
 });
 
-module.exports = mongoose.model('questionTree', questionTreeSchema);
+module.exports = mongoose.model('QuestionTree', QuestionTreeSchema);
