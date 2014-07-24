@@ -27,13 +27,13 @@ app.config(function ($stateProvider) {
 
 app.run(['$rootScope', function($rootScope){
     $rootScope.$on('$stateChangeStart', function() {
-      console.log('stateChangeStart');
+      // console.log('stateChangeStart');
       $rootScope.db = $rootScope.updatedb;
-      console.log('db update');
+      // console.log('db update');
       // $roorScope.answer = $rootScope.updateanswer;
     });
     $rootScope.$on('$stateChangeSuccess', function() {
-      console.log('stateChangeSuccess');
+      // console.log('stateChangeSuccess');
     });
   }]);
 
@@ -43,11 +43,18 @@ app.controller('mainCtrl', function($scope, $http, $state, $rootScope){
 
     $scope.$state = $state;
 
+    $scope.chooseDb = false;
     // $rootScope.db = db;
   // read data from json
-    $http.get('data.json').success(function(data) {
-      $rootScope.db = data;
+
+    $http.get('/api/questionTrees').success(function(data) {
+      $scope.questionTree = data;
     });
+
+    $rootScope.selectDb = function(data) {
+      $scope.chooseDb = true;
+      $rootScope.db = data[0];
+    };
 
     // $.getJSON('data.json',function(data) {
     //   $rootScope.db=data;
@@ -58,12 +65,12 @@ app.controller('mainCtrl', function($scope, $http, $state, $rootScope){
         // $rootScope.answer = $rootScope.answer;
         $rootScope.updatedb = eval("(" + data + ")").next;
         $rootScope.answer = eval("(" + data + ")").answer;
-        console.log("next function runs");
+        // console.log("next function runs");
       };
 
     $scope.prev = function () {
         $rootScope.updatedb = $rootScope.olddb;
-        console.log("prev function runs");
+        // console.log("prev function runs");
     };
   });
 
@@ -74,12 +81,12 @@ app.directive('loadbar',['$rootScope', function($rootScope) {
 
       $rootScope.$on('$stateChangeStart', function() {
         element.removeClass('hide');
-        console.log('show the load bar');
+        // console.log('show the load bar');
       });
 
       $rootScope.$on('$stateChangeSuccess', function() {
         element.addClass('hide');
-        console.log('remove the load bar');
+        // console.log('remove the load bar');
       });
     }
   };

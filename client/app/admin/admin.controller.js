@@ -16,11 +16,22 @@ angular.module('angularMultiStepFormApp')
       });
     };
 
+    $http.get('/api/questionTrees').success(function(data) {
+      $scope.questionTrees = data;
+    });
+
+    $scope.deleteTree = function(id) {
+      $http.delete('/api/questionTrees/' + id).success(function(data) {
+        $scope.questionTrees = data;
+      });
+    };
+
     $scope.saveServer = function() {
       $scope.questionDb = {};
       $scope.questionDb.tree = $scope.tree;
       $scope.questionDb.name = 'DB:' + $scope.tree[0].question;
       $http.post('/api/questionTrees',$scope.questionDb).success(function(data) {
+        $scope.questionTrees = data;
       });
     };
 

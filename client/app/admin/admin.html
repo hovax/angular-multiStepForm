@@ -13,8 +13,19 @@
 <hr>
 
 <h2><span class="glyphicon glyphicon-th-list"></span> Database Management</h2>
+
+    <h4>---Current Databases <span class="label label-info">{{questionTrees.length}}</span></h3></h4>
+        <li class="list-group-item" ng-repeat="questionTree in questionTrees">
+        <strong>{{questionTree.name}}</strong><br>
+        <span class="text-muted">{{questionTree.text}}</span>
+        <a ng-click="deleteTree(questionTree._id)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+    </li>
+    <hr>
+
+    <h4>---Add new Database <button ng-click="saveServer()"><span class="glyphicon glyphicon-hdd"> Save to Server</span></button></h4>
     <div ng-repeat="data in tree" ng-include="'tree_item_renderer_top.html'"></div>
-    <button ng-click="saveServer()"><span class="glyphicon glyphicon-hdd"> Save to Server</span></button>
+
+
 <hr>
 </div>
 

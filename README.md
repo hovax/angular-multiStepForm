@@ -1,15 +1,12 @@
-angular-multiStepForm
+angular-multiStepForm document
 =====================
 
-Multi-Step Form using AngularJS and UI-Router
-
-Have the same/advanced function as the questionaire smaple in angular-test app
-
-Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end back-end structure (See the MEAN branch)
+Multi-Step Form using MEAN Stack(MongoDB, Express, Angular.JS, Node.JS)
 
 ## Product Logic
-* front-end (Admin section on MEAN branch)
+* client
     * User
+        * select the proper database
         * question
         * options
         * with specific option, goto different subquestions
@@ -17,25 +14,27 @@ Apply MEAN stack (Mongo + Express + Angular + Node) to realize the front-end bac
     * Admin
         * user management
         * database management
-* back-end
-
-## Current Features
-* use two view to achieve the animation
-* defered update the questionaire databse
-* prev and next function to come back and through
-
-## ToDo
-* in order to use prev to goto prev x step, need change in data structure(like double linked list)
+* server
+    * User
+        * get entries from database
+    * Admin
+        * post entries to database
+        * delete entries from database
 
 ## Requirements
-* Yeoman
-* Grunt
-* Bower
-* AngularJS
-* MongoDB
-* Express
-* NodeJS
-* Angular-UI-Router
-* PassportJS
-* Mongoose
+* Tools and Libraries
+    * Yeoman
+    * Yeoman MEAN-stack generator
+    * Grunt
+    * Bower
+    * Angular.JS
+    * JQuery.JS
+    * MongoDB
+    * Express
+    * Node.JS
+    * Angular-UI-Router
+    * PassportJS
+    * Mongoose
+    * Bootstrap
+    * Font-Awesome
 
